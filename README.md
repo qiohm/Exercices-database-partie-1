@@ -1,7 +1,7 @@
 # Exercices-database-partie-1
 rendu en README.md d'exercices de créeation de DataBase avec psql
 
-
+```
 postgres=> CREATE DATABASE db_1;
 CREATE DATABASE
 
@@ -19,8 +19,8 @@ postgres=> \list
 
 postgres=> \c db_1
 You are now connected to database "db_1" as user "db_user".
-
-
+```
+```
 postgres=> \c db_1
 You are now connected to database "db_1" as user "db_user".
 db_1=> CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(30), password VARCHAR(30));
@@ -35,7 +35,8 @@ db_1=> SELECT * FROM users;
   2 | bob     | 456
   3 | charlie | 789
 (3 rows)
-
+```
+```
 db_1=> INSERT INTO users (name, password) VALUES ('dan', '101112'), ('eve', '131415'), ('faythe', '161718');
 INSERT 0 3
 db_1=> SELECT * FROM users;
@@ -48,7 +49,9 @@ db_1=> SELECT * FROM users;
   5 | eve     | 131415
   6 | faythe  | 161718
 (6 rows)
+```
 
+```
 db_1=> SELECT * FROM users WHERE LENGTH(password) > 3;
  id |  name  | password
 ----+--------+----------
@@ -56,7 +59,9 @@ db_1=> SELECT * FROM users WHERE LENGTH(password) > 3;
   5 | eve    | 131415
   6 | faythe | 161718
 (3 rows)
+```
 
+```
 db_1=> ALTER TABLE users ADD COLUMN bio TEXT DEFAULT 'Hello World!';
 ALTER TABLE
 db_1=> SELECT * FROM users;
@@ -69,7 +74,8 @@ db_1=> SELECT * FROM users;
   5 | eve     | 131415   | Hello World!
   6 | faythe  | 161718   | Hello World!
 (6 rows)
-
+```
+```
 db_1=> UPDATE users SET bio = 'hello,i am '||(name);
 UPDATE 6
 db_1=> SELECT * FROM users;
@@ -82,7 +88,9 @@ db_1=> SELECT * FROM users;
   5 | eve     | 131415   | hello,i am eve
   6 | faythe  | 161718   | hello,i am faythe
 (6 rows)
+```
 
+```
 db_1=> SELECT * FROM users ORDER BY id DESC LIMIT 2;
  id |  name  | password |        bio
 ----+--------+----------+-------------------
@@ -97,7 +105,8 @@ db_1=> SELECT * FROM users WHERE id%2=1;
   3 | charlie | 789      | hello,i am charlie
   5 | eve     | 131415   | hello,i am eve
 (3 rows)
-
+```
+```
 db_1=> DELETE FROM users WHERE id%2=0;
 DELETE 3
 db_1=> SELECT * FROM users;
@@ -107,7 +116,8 @@ db_1=> SELECT * FROM users;
   3 | charlie | 789      | hello,i am charlie
   5 | eve     | 131415   | hello,i am eve
 (3 rows)
-
+```
+```
 db_1=> DROP TABLE users;
 DROP TABLE
 
@@ -115,3 +125,4 @@ db_1=> \c postgres
 You are now connected to database "postgres" as user "db_user".
 postgres=> DROP DATABASE db_1;
 DROP DATABASE
+```
